@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:25:46 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/08 17:01:57 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:50:10 by kbrener-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include <string>
 #include <iostream>
@@ -37,22 +37,32 @@ class	Bureaucrat {
 class	GradeTooHighException : public std::exception {
 	private:
 		std::string	_message;
+		std::string	_nameOfTheBureaucrat;
+		std::string	_fullMessage;
 	public :
-		GradeTooHighException(const std::string & message) : _message(message) {}
-		virtual ~GradeTooHighException() throw() {}
-		virtual const char* what() const throw() {
-			return _message.c_str();
+		GradeTooHighException(const std::string & message, const std::string & nameOfTheBureaucrat)
+		: _message(message), _nameOfTheBureaucrat(nameOfTheBureaucrat) {
+			_fullMessage = _nameOfTheBureaucrat + " " + _message + ", the grade is too high";
+		}
+		virtual ~GradeTooHighException() throw() {}//en spécifiant throw() on précise qu'aucune exception ne sera lancée dans cette fonction
+		virtual const char* what() const throw() {//ici, on redéfinit la fonction what() de std::exception
+			return _fullMessage.c_str();
 		}
 };
 
 class GradeTooLowException : public std::exception {
 	private:
 		std::string	_message;
-	public:
-		GradeTooLowException(const std::string & message) : _message(message) {}
-		virtual ~GradeTooLowException() throw() {}
-		virtual const char* what() const throw() {
-			return _message.c_str();
+		std::string	_nameOfTheBureaucrat;
+		std::string	_fullMessage;
+	public :
+		GradeTooLowException(const std::string & message, const std::string & nameOfTheBureaucrat)
+		: _message(message), _nameOfTheBureaucrat(nameOfTheBureaucrat) {
+			_fullMessage = _nameOfTheBureaucrat + " " + _message + ", the grade is too low";
+		}
+		virtual ~GradeTooLowException() throw() {}//en spécifiant throw() on précise qu'aucune exception ne sera lancée dans cette fonction
+		virtual const char* what() const throw() {//ici, on redéfinit la fonction what() de std::exception
+			return _fullMessage.c_str();
 		}
 };
 

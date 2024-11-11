@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:29:48 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/08 17:04:09 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:10:44 by kbrener-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "Bureaucrat.hpp"
 
@@ -19,16 +19,16 @@ Bureaucrat::Bureaucrat() : _name("unknown"), _grade(150) {
 Bureaucrat::Bureaucrat(const std::string & name, int grade) : _name(name) {
 	std::cout<<"Bureaucrat constructor called"<<std::endl;
 	if (grade < 1)
-		throw GradeTooHighException("Grade is too high, 1 is the highest");
+		throw GradeTooHighException("cannot be constructed with this grade", _name);
 	else if (grade > 150)
-		throw GradeTooLowException("Grade is too low, 150 is th lowest");
+		throw GradeTooLowException("cannot be constructed with this grade", _name);
 	else
 		_grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat & src) : _name(src._name) {
 	*this = src;
-	std::cout<<"Bureaucrat cpy constructor called"<<std::endl;
+	std::cout<<"Bureaucrat copy constructor called"<<std::endl;
 }
 
 Bureaucrat &	Bureaucrat::operator=(const Bureaucrat & src) {
@@ -42,21 +42,21 @@ std::string	Bureaucrat::getName() const {
 	return _name;
 }
 
-int			Bureaucrat::getGrade() const {
+int	Bureaucrat::getGrade() const {
 	return _grade;
 }
 
 
 void	Bureaucrat::incrementGrade() {
 	if (_grade == 1)
-		throw GradeTooHighException("Grade cannot be higher");
+		throw GradeTooHighException("Grade cannot be increment", _name);
 	else
 		_grade--;
 }
 
 void	Bureaucrat::decrementGrade() {
 	if (_grade == 150)
-		throw GradeTooLowException("Grade cannot be lower");
+		throw GradeTooLowException("Grade cannot be decrement", _name);
 	else
 		_grade++;
 }
