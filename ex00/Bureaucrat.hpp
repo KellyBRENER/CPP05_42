@@ -6,7 +6,7 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:25:46 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/11 09:50:10 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/11 11:49:22 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -32,9 +32,8 @@ class	Bureaucrat {
 		int			getGrade() const;
 		void			incrementGrade();
 		void			decrementGrade();
-};
 
-class	GradeTooHighException : public std::exception {
+		class	GradeTooHighException : public std::exception {
 	private:
 		std::string	_message;
 		std::string	_nameOfTheBureaucrat;
@@ -65,6 +64,9 @@ class GradeTooLowException : public std::exception {
 			return _fullMessage.c_str();
 		}
 };
+
+};
+
 
 std::ostream&	operator<<(std::ostream& o, const Bureaucrat& src);
 #endif
