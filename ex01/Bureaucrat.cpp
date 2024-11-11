@@ -6,11 +6,12 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:29:48 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/11 11:30:46 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:15:25 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("unknown"), _grade(150) {}
 
@@ -57,6 +58,13 @@ void	Bureaucrat::decrementGrade() {
 		throw Bureaucrat::GradeTooLowException("Grade cannot be decrement", _name);
 	else
 		_grade++;
+}
+
+void	Bureaucrat::signForm(Form & doc) {
+	if (doc.getIsSigned() == true)
+		std::cout<<_name<<" couldn't sign "<<doc.getName()<<" because this form is already signed"<<std::endl;
+	else if (doc.beSigned(*this) == true)
+		std::cout<<_name<<" signed form '"<<doc.getName()<<"'"<<std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {}

@@ -6,11 +6,12 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:04:40 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/11 11:47:45 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:38:57 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 void	theOffice(Bureaucrat& BigBoss, Bureaucrat& manager, Bureaucrat& stagiaire)
 {
@@ -37,13 +38,18 @@ BigBoss<<"\n"<<manager<<"\n"<<stagiaire<<"\n"<<"***Tomorrow is another day..."<<
 }
 
 int main() {
+		Bureaucrat	manager("Dwight Schrute", 15);
+		Bureaucrat	stagiaire("Ryan Howard", 140);
+		Bureaucrat	BigBoss("Mickeal Scott", 2);
+		Form	formToSign("bon de livraison", 15, 150);
+		std::cout<<formToSign<<std::endl;
+		Form	contrat("contract", 1, 1);
+		std::cout<<contrat<<std::endl;
 	try
 	{
 		std::cout<<"**********TEST WITHOUT ERROR**********"<<std::endl;
-		Bureaucrat	manager("Dwight Schrute", 15);
-		Bureaucrat	stagiaire("Ryan Howard", 140);
-		Bureaucrat	BigBoss("Mickeal Scott", 2);
-		theOffice(BigBoss, manager, stagiaire);
+		BigBoss.signForm(formToSign);
+		manager.signForm(formToSign);
 	}
 	catch (std::exception& e)
 	{
@@ -51,11 +57,8 @@ int main() {
 	}
 	try
 	{
-		std::cout<<"**********GRADE TOO LOW**********"<<std::endl;
-		Bureaucrat	manager("Dwight Schrute", 15);
-		Bureaucrat	stagiaire("Ryan Howard", 151);
-		Bureaucrat	BigBoss("Mickeal Scott", 2);
-		theOffice(BigBoss, manager, stagiaire);
+		std::cout<<"**********BUREAUCRAT GRADE TOO LOW**********"<<std::endl;
+		BigBoss.signForm(contrat);
 	}
 	catch (std::exception& e)
 	{
@@ -63,11 +66,9 @@ int main() {
 	}
 	try
 	{
-		std::cout<<"**********GRADE TOO HIGH**********"<<std::endl;
-		Bureaucrat	manager("Dwight Schrute", 15);
-		Bureaucrat	stagiaire("Ryan Howard", 140);
-		Bureaucrat	BigBoss("Mickeal Scott", 0);
+		std::cout<<"**********BUREAUCRAT GRADE ENOUGH**********"<<std::endl;
 		theOffice(BigBoss, manager, stagiaire);
+		BigBoss.signForm(contrat);
 	}
 	catch (std::exception& e)
 	{
@@ -75,11 +76,8 @@ int main() {
 	}
 	try
 	{
-		std::cout<<"**********ERROR DECREMENTING**********"<<std::endl;
-		Bureaucrat	manager("Dwight Schrute", 15);
-		Bureaucrat	stagiaire("Ryan Howard", 150);
-		Bureaucrat	BigBoss("Mickeal Scott", 2);
-		theOffice(BigBoss, manager, stagiaire);
+		std::cout<<"**********GRADE TOO HIGH DURING CONSTRUCTION**********"<<std::endl;
+		Form	papier("paperasse", 0, 150);
 	}
 	catch (std::exception& e)
 	{
@@ -87,11 +85,8 @@ int main() {
 	}
 	try
 	{
-		std::cout<<"**********ERROR INCREMENTING**********"<<std::endl;
-		Bureaucrat	manager("Dwight Schrute", 15);
-		Bureaucrat	stagiaire("Ryan Howard", 140);
-		Bureaucrat	BigBoss("Mickeal Scott", 1);
-		theOffice(BigBoss, manager, stagiaire);
+		std::cout<<"**********GRADE TOO HIGH DURING CONSTRUCTION**********"<<std::endl;
+		Form papier("paperasse", 1, 160);
 	}
 	catch (std::exception& e)
 	{

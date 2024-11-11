@@ -6,7 +6,7 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:25:46 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/11 12:08:02 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:33:44 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -17,7 +17,7 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-class	Form{};
+class	Form;
 
 class	Bureaucrat {
 	private:

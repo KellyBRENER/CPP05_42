@@ -6,7 +6,7 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:52:41 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/11 12:20:23 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:46:38 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -23,7 +23,7 @@ class	Form {
 		const int			_gradeToExecuteIt;
 	public:
 	Form() : _name("unknown"), _isSigned(false), _gradeToSignIt(150), _gradeToExecuteIt(150) {}
-	Form(std::string name, bool isSigned, int gradeToSignIt, int gradeToExecuteIt);
+	Form(std::string name, int gradeToSignIt, int gradeToExecuteIt);
 	Form(const Form & src);
 	Form&	operator=(const Form & src);
 	~Form(){}
@@ -34,23 +34,28 @@ class	Form {
 	int			getGradeToExecuteIt() const;
 	/*MEMBER FUNCTIONS*/
 	bool	beSigned(const Bureaucrat& employee);
-	class	GradeTooHighException : std::exception {
+	class	GradeTooHighException : public std::exception {
 		private:
 		std::string	_message;
-		std::string	_nameOfTheForm;
-		std::string	_nameOfTheGrade;
-		std::string	_fullMessage;
 	public :
-		GradeTooHighException(const std::string & message, const std::string & nameOfTheBureaucrat)
-		: _message(message), _nameOfTheForm(nameOfTheBureaucrat) {
-			_fullMessage = _nameOfTheForm + " " + _message + ", the grade is too high";
-		}
+		GradeTooHighException(const std::string & message)
+		: _message(message) {}
 		virtual ~GradeTooHighException() throw() {}//en spécifiant throw() on précise qu'aucune exception ne sera lancée dans cette fonction
 		virtual const char* what() const throw() {//ici, on redéfinit la fonction what() de std::exception
-			return _fullMessage.c_str();
+			return _message.c_str();
 		}
 	};
-	class	GradeTooLowException : std::exception {};
+	class	GradeTooLowException : public std::exception {
+		private:
+		std::string	_message;
+		public :
+			GradeTooLowException(const std::string & message)
+			: _message(message) {}
+			virtual ~GradeTooLowException() throw() {}//en spécifiant throw() on précise qu'aucune exception ne sera lancée dans cette fonction
+			virtual const char* what() const throw() {//ici, on redéfinit la fonction what() de std::exception
+				return _message.c_str();
+			}
+	};
 };
 
 std::ostream&	operator<<(std::ostream& o, const Form& src);
