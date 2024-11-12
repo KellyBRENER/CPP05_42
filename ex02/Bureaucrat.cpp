@@ -6,7 +6,7 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:29:48 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/12 09:55:40 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:29:06 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -65,6 +65,11 @@ void	Bureaucrat::signForm(AForm & doc) {
 		std::cout<<_name<<" couldn't sign "<<doc.getName()<<" because this form is already signed"<<std::endl;
 	else if (doc.beSigned(*this) == true)
 		std::cout<<_name<<" signed form '"<<doc.getName()<<"'"<<std::endl;
+}
+
+void	Bureaucrat::executeForm(AForm const & form) {
+	form.execute(*this);
+	std::cout<<_name<<" executed "<<form.getName()<<std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {}
