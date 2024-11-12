@@ -6,12 +6,12 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:04:40 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/11 15:38:57 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:54:01 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 void	theOffice(Bureaucrat& BigBoss, Bureaucrat& manager, Bureaucrat& stagiaire)
 {
