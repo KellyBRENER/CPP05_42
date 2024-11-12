@@ -1,31 +1,30 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 11:13:39 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/12 12:12:13 by kbrener-         ###   ########.fr       */
+/*   Created: 2024/11/12 12:05:01 by kbrener-          #+#    #+#             */
+/*   Updated: 2024/11/12 12:22:57 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "AForm.hpp"
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 private:
 	std::string	_target;
 public:
-	/*canonique form*/
-	RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target(NULL) {}
-	~RobotomyRequestForm() {}
-	RobotomyRequestForm(const std::string & target) : AForm("RobotomyRequestForm", 72, 45), _target(target) {}
-	RobotomyRequestForm(const RobotomyRequestForm & src) : AForm(src) {*this = src;}
-	RobotomyRequestForm &	operator=(const RobotomyRequestForm & src) {
+	PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), _target(NULL) {}
+	~PresidentialPardonForm() {}
+	PresidentialPardonForm(const std::string & target) : AForm("PresidentialPardonForm", 25, 5), _target(target) {}
+	PresidentialPardonForm(const PresidentialPardonForm & src) : AForm(src) {*this = src;}
+	PresidentialPardonForm&	operator=(const PresidentialPardonForm & src) {
 		if (this != &src) {
 			AForm::operator=(src);
 			_target = src._target;
@@ -33,9 +32,7 @@ public:
 		return *this;
 	}
 
-	/*MEMBER FUNCTION*/
 	virtual void	execute(Bureaucrat const & executor) const;
 };
 
 #endif
-

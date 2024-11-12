@@ -6,7 +6,7 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:04:40 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/12 12:01:37 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:20:23 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,6 +14,7 @@
 #include "AForm.hpp"
 #include "ShrubberryCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main() {
 	Bureaucrat	manager("Dwight Schrute", 15);
@@ -56,9 +57,28 @@ int main() {
 	// 	std::cerr<<"ERROR : "<<e.what()<<std::endl;
 	// }
 	/*ROBOTOMY*/
+	// try {
+	// 	std::cout<<"********ROBOTOMY works********"<<std::endl;
+	// 	RobotomyRequestForm	zappette("stagiaire");
+	// 	BigBoss.signForm(zappette);
+	// 	zappette.execute(BigBoss);
+	// }
+	// catch (std::exception& e) {
+	// 	std::cerr<<"ERROR : "<<e.what()<<std::endl;
+	// }
+	// try {
+	// 	std::cout<<"********ROBOTOMY exception********"<<std::endl;
+	// 	RobotomyRequestForm	zappette("stagiaire");
+	// 	manager.signForm(zappette);
+	// 	zappette.execute(stagiaire);
+	// }
+	// catch (std::exception& e) {
+	// 	std::cerr<<"ERROR : "<<e.what()<<std::endl;
+	// }
+	/*PRESIDENTIAL PARDON*/
 	try {
-		std::cout<<"********ROBOTOMY works********"<<std::endl;
-		RobotomyRequestForm	zappette("stagiaire");
+		std::cout<<"********PRESIDENTIAL PARDON works********"<<std::endl;
+		PresidentialPardonForm	zappette(BigBoss.getName());
 		BigBoss.signForm(zappette);
 		zappette.execute(BigBoss);
 	}
@@ -66,10 +86,10 @@ int main() {
 		std::cerr<<"ERROR : "<<e.what()<<std::endl;
 	}
 	try {
-		std::cout<<"********ROBOTOMY exception********"<<std::endl;
-		RobotomyRequestForm	zappette("stagiaire");
+		std::cout<<"********PRESIDENTIAL PARDON exception********"<<std::endl;
+		PresidentialPardonForm	zappette(BigBoss.getName());
 		manager.signForm(zappette);
-		zappette.execute(stagiaire);
+		zappette.execute(manager);
 	}
 	catch (std::exception& e) {
 		std::cerr<<"ERROR : "<<e.what()<<std::endl;
