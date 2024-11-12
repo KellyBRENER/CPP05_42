@@ -44,34 +44,38 @@ class	AForm {
 	class	GradeTooHighException : public std::exception {
 		private:
 			std::string	_gradeName;
+			std::string _fullMessage;
 		public :
 			GradeTooHighException(const std::string & gradeName)
-			: _gradeName(gradeName) {}
-			virtual ~GradeTooHighException() throw() {}//en spécifiant throw() on précise qu'aucune exception ne sera lancée dans cette fonction
-			virtual const char* what() const throw() {//ici, on redéfinit la fonction what() de std::exception
-				return ("the grade " + _gradeName + " is too low").c_str();
+			: _gradeName(gradeName), _fullMessage("the grade " + _gradeName + " is too high") {}
+			virtual ~GradeTooHighException() throw() {}
+			virtual const char* what() const throw() {
+				return _fullMessage.c_str();
 			}
 	};
 	class	GradeTooLowException : public std::exception {
 		private:
 			std::string	_gradeName;
+			std::string	_fullMessage;
 		public :
 			GradeTooLowException(const std::string & gradeName)
-			: _gradeName(gradeName) {}
-			virtual ~GradeTooLowException() throw() {}//en spécifiant throw() on précise qu'aucune exception ne sera lancée dans cette fonction
-			virtual const char* what() const throw() {//ici, on redéfinit la fonction what() de std::exception
-				return ("the grade " + _gradeName + " is too low").c_str();
+			: _gradeName(gradeName), _fullMessage("the grade " + _gradeName + " is too low") {}
+			virtual ~GradeTooLowException() throw() {}
+			virtual const char* what() const throw() {
+				return _fullMessage.c_str();
 			}
 	};
 	class	FormNotExecutableException : public std::exception {
 		private:
 			std::string	_reason;
+			std::string	_formName;
+			std::string _fullMessage;
 		public :
-			GradeTooLowException(const std::string & reason)
-			: _reason(reason) {}
-			virtual ~GradeTooLowException() throw() {}//en spécifiant throw() on précise qu'aucune exception ne sera lancée dans cette fonction
-			virtual const char* what() const throw() {//ici, on redéfinit la fonction what() de std::exception
-				return ("the form "+ getName()+ " is not executable because " + _reason).c_str();
+			FormNotExecutableException(const std::string & reason, const std::string & formName)
+			: _reason(reason), _formName(formName) , _fullMessage("the form '" + _formName + "' is not executable because " + _reason){}
+			virtual ~FormNotExecutableException() throw() {}
+			virtual const char* what() const throw() {
+				return _fullMessage.c_str();
 			}
 	};
 };

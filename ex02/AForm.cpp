@@ -6,7 +6,7 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:14:05 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/12 09:03:47 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/12 10:42:30 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -62,7 +62,7 @@ bool	AForm::beSigned(const Bureaucrat& employee) {
 		_isSigned = true;
 	}
 	else {
-		std::string message = employee.getName() + " couldn't sign Form '" + _name + "' because his grade is too low";
+		std::string message = employee.getName() + " couldn't sign Form '" + _name + "' because his grade";
 		throw AForm::GradeTooLowException(message);
 	}
 	return _isSigned;

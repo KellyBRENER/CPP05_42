@@ -6,11 +6,11 @@
 #    By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/28 14:04:45 by kbrener-          #+#    #+#              #
-#    Updated: 2024/11/11 11:51:50 by kbrener-         ###   ########.fr        #
+#    Updated: 2024/11/12 10:07:40 by kbrener-         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME = form
+NAME = Aform
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_DIR = obj/
