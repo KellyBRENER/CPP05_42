@@ -6,7 +6,7 @@
 /*   By: kbrener- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:16:08 by kbrener-          #+#    #+#             */
-/*   Updated: 2024/11/12 10:44:20 by kbrener-         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:36:02 by kbrener-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -66,6 +66,7 @@ ShrubberryCreationForm::ShrubberryCreationForm(const ShrubberryCreationForm & sr
 ShrubberryCreationForm&	ShrubberryCreationForm::operator=(const ShrubberryCreationForm & src) {
 	if (this == &src)
 		return *this;
+	AForm::operator=(src);
 	_target = src._target;
 	return *this;
 }
